@@ -1,0 +1,10 @@
+langchain-groq
+langchain-mcp-adapters 
+fastmcp
+mcp
+langgraph
+pydub
+speechrecognition
+faster_whisper
+streamlit
+pyautogui
