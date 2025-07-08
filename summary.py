@@ -9,8 +9,11 @@ import tempfile
 import requests
 import json
 from dotenv import load_dotenv
+from fastapi import FastAPI
+
 
 load_dotenv()
+app = FastAPI()
 
 
 # --- Create MCP server ---
@@ -90,4 +93,12 @@ async def get_summary(file_path: str) -> str:
     return transcript
 
 if __name__=="__main__":
-    mcp.run(transport="streamable-http")
+    import os
+    import uvicorn
+    port = int(os.environ.get("PORT", "10000"))
+    uvicorn.run(
+        "summary:app",               # "<module>:<FastAPI app>"
+        host="0.0.0.0",
+        port=port,
+        log_level="info",
+    )
